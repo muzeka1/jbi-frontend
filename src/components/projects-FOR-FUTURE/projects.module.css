@@ -1,0 +1,45 @@
+.projects {
+    position: relative;
+    width: 100%;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper :global(.swiper-wrapper) {
+    transition-timing-function: cubic-bezier(
+        0.6,
+        0,
+        0.4,
+        1
+    );
+}
+
+.swiper :global(.swiper-slide) {
+    width: 100%;
+    height: 100vh;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 120px;
+    font-weight: 700;
+}

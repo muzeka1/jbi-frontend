@@ -1,0 +1,91 @@
+
+.hero {
+  width: 100%;
+  filter: brightness(70%);
+}
+
+.swiper {
+  width: 100%;
+}
+
+/*
+ * Контейнер плиток.
+ */
+.grid {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  perspective: 1000px;
+
+  overflow: hidden;
+}
+
+/*
+ * Каждая плитка.
+ */
+.cell {
+  position: absolute;
+
+  top: calc(
+    var(--row) * 100% / var(--rows)
+  );
+
+  left: calc(
+    var(--column) * 100% / var(--columns) - 1px
+  );
+
+  width: calc(
+    100% / var(--columns) + 1px
+  );
+
+  height: calc(
+    100% / var(--rows)
+  );
+  background-image: var(--image);
+
+  background-repeat: no-repeat;
+
+  background-size:
+    calc(var(--columns) * 100%)
+    calc(var(--rows) * 100%);
+
+  /*
+   * Каждая плитка показывает
+   * свою область изображения.
+   */
+  background-position:
+    var(--background-x)
+    var(--background-y);
+
+  /*
+   * 3D flip.
+   */
+  transform-style: preserve-3d;
+
+  transform-origin: center center;
+
+  /* backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; */
+
+  /*
+   * Подсказка браузеру,
+   * что элемент будет трансформироваться.
+   */
+  will-change: transform;
+
+  /*
+   * Убираем возможные артефакты
+   * inline/block rendering.
+   */
+  display: block;
+}
+
+/*
+ * Swiper при fade накладывает слайды
+ * друг на друга.
+ */
+.swiper :global(.swiper-slide) {
+  overflow: hidden;
+}
