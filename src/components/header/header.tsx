@@ -174,12 +174,9 @@ export default function Header() {
     <>
       {/* HEADER */}
 
-      {!isMenuOpen && (
         <header className={styles.header}>
           <div className={styles.container}>
             <Link href="/" className={styles.logo}>
-              <span className={styles.logoMark}>С</span>
-
               <span className={styles.logoText}>
                 JBI
               </span>
@@ -216,8 +213,6 @@ export default function Header() {
                 onClick={toggleMenu}
                 aria-label="Открыть меню"
               >
-                <span>Меню</span>
-
                 <span className={styles.menuIcon}>
                   <span />
                   <span />
@@ -226,9 +221,8 @@ export default function Header() {
             </div>
           </div>
         </header>
-      )}
 
-      {/* FULLSCREEN MENU */}
+      {/* МЕНЮ */}
 
       <div
         ref={menuRef}
@@ -238,12 +232,8 @@ export default function Header() {
         <div className={styles.menuContainer}>
           <div className={styles.menuHeader}>
             <Link href="/" className={styles.logo}>
-              <span className={styles.logoMark}>С</span>
-
               <span className={styles.logoText}>
-                СТРОЙ
-                <br />
-                ГРУПП
+                JBI
               </span>
             </Link>
 
@@ -253,8 +243,6 @@ export default function Header() {
               onClick={closeMenu}
               aria-label="Закрыть меню"
             >
-              <span>Закрыть</span>
-
               <span className={styles.closeIcon}>
                 <span />
                 <span />

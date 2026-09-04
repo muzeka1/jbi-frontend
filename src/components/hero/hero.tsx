@@ -98,11 +98,6 @@ export default function Hero() {
 
             <div className={styles.container}>
                 <div className={styles.content}>
-                    <div className={`${styles.eyebrow} hero-eyebrow`}>
-                        <span className={styles.dot} />
-                        Строительная компания
-                        <span>Махачкала</span>
-                    </div>
 
                     <h1 className={styles.title}>
                         <span className={styles.titleLine}>

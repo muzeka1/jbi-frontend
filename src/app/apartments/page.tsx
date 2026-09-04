@@ -1,13 +1,20 @@
-import Hero from '@/src/components/hero/hero';
-import Projects from '../../components/projects-FOR-FUTURE/projects';
+"use client"
 import ApartmentsSearch from '../../components/apartments-search/apartments-search';
-import Header from '../../components/header/header';
+import {apartments} from "@/src/api/apartmemts";
+import { useState } from "react";
+import { Apartment } from '../../types/apartments';
+import ApartmentList from '../../components/apartments-list/apartments-list';
 
 export default function HomePage() {
+  const [filteredApartments, setFilteredApartments] = useState<Apartment[]>(apartments);
+  
   return (
     <main>
-      <Header></Header>
-      <ApartmentsSearch/>
+      <ApartmentsSearch 
+      apartments={apartments}
+      onFilterChange={setFilteredApartments}
+      />
+      <ApartmentList apartments={filteredApartments} />
     </main>
   );
 }

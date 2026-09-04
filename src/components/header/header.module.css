@@ -134,12 +134,11 @@
   gap: 14px;
 
   height: 48px;
-  padding: 0 8px 0 18px;
+  padding: 0 8px 0 ;
 
   border: 0;
   border-radius: 100px;
 
-  background: #fff;
   color: #111;
 
   font-family: inherit;
@@ -161,13 +160,11 @@
   position: relative;
 
   display: flex;
-  width: 34px;
-  height: 34px;
 
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 
   border-radius: 50%;
   background: #111;
@@ -176,7 +173,7 @@
 .menuIcon span {
   display: block;
 
-  width: 12px;
+  width: 34px;
   height: 1px;
 
   background: #fff;
@@ -220,19 +217,14 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 }
 
-.closeButton {
-  background: #fff;
-}
-
 .closeIcon {
   position: relative;
-
+  width: 100%;
   display: block;
   width: 34px;
   height: 34px;
 
   border-radius: 50%;
-  background: #111;
 }
 
 .closeIcon span {
@@ -240,10 +232,11 @@
   top: 50%;
   left: 50%;
 
-  width: 13px;
+  width: 34px;
   height: 1px;
 
   background: #fff;
+  transition: width .3s ease
 }
 
 .closeIcon span:first-child {
@@ -252,6 +245,10 @@
 
 .closeIcon span:last-child {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.menuButton:hover .closeIcon span {
+  width: 52px;
 }
 
 /* Menu content */
