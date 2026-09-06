@@ -6,6 +6,7 @@ export interface Advantage {
 }
 
 export interface Apartment {
+    id: number
     price: number
     area: number
     rooms: number

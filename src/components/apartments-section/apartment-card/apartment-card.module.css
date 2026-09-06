@@ -1,19 +1,7 @@
-
-.list {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(280px, 1fr)
-  );
-  gap: 16px;
-  width: 100%;
-}
-
 .card {
+  position: relative;
   overflow: hidden;
-
-  border: 1px solid #e8e8e8;
-  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.144);
 
   background: #fff;
 
@@ -24,7 +12,6 @@
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .image {
@@ -33,7 +20,7 @@
   justify-content: center;
 
   height: 180px;
-
+  width: auto;
   background: #f3f3f3;
 
   color: #999;
@@ -51,6 +38,84 @@
   font-weight: 600;
   color: #222;
 }
+
+/* ====== LIKE ============================================================== */
+
+.favorite {
+  transform: scale(1.5);
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.favoriteIcon {
+  width: 20px;
+  height: 20px;
+
+  overflow: visible;
+}
+
+.favoritePath {
+  fill: transparent;
+  stroke: #000;
+  stroke-width: 1.2;
+
+  transform-box: fill-box;
+  transform-origin: center;
+
+  transition:
+    fill 180ms ease,
+    stroke 180ms ease,
+    transform 180ms ease;
+}
+
+/* Лайк */
+.favoriteActive .favoritePath {
+  fill: #e53935;
+  stroke: #e53935;
+
+  animation: heartLike 300ms ease;
+}
+
+@keyframes heartLike {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.25);
+  }
+
+  70% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.favorite:hover .favoritePath {
+  transform: scale(1.08);
+}
+
+.favoriteActive:hover .favoritePath {
+  transform: none;
+}
+
+/* =========================================================================== */
 
 .info {
   display: flex;

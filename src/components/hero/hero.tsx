@@ -26,7 +26,7 @@ export default function Hero() {
 
             tl.from(".hero-image", {
                 scale: 1.12,
-                duration: 1.8,
+                duration: 1,
             })
                 .from(
                     ".hero-overlay",
@@ -34,7 +34,7 @@ export default function Hero() {
                         opacity: 0,
                         duration: 1,
                     },
-                    "-=1.4"
+                    "-=0.3"
                 )
                 .from(
                     ".hero-eyebrow",
@@ -61,7 +61,7 @@ export default function Hero() {
                         opacity: 0,
                         duration: 0.7,
                     },
-                    "-=0.5"
+                    "-=2"
                 )
                 .from(
                     ".hero-actions",
@@ -70,7 +70,7 @@ export default function Hero() {
                         opacity: 0,
                         duration: 0.6,
                     },
-                    "-=0.4"
+                    "-=1.7"
                 )
                 .from(
                     ".hero-bottom",
@@ -79,7 +79,7 @@ export default function Hero() {
                         opacity: 0,
                         duration: 0.6,
                     },
-                    "-=0.3"
+                    "-=1.3"
                 );
         }, heroRef);
 
@@ -88,10 +88,10 @@ export default function Hero() {
 
     return (
         <section ref={heroRef} className={styles.hero}>
-            
+
 
             <div className={`${styles.image} hero-image`}>
-                <AutoRevealSlider images={images} duration={2} interval={2100}/>
+                <AutoRevealSlider images={images} duration={2} interval={2100} />
             </div>
 
             <div className={`${styles.overlay} hero-overlay`} />
@@ -122,7 +122,7 @@ export default function Hero() {
                         </p>
 
                         <div className={`${styles.actions} hero-actions`}>
-                            <Link href="/projects" className={styles.primaryButton}>
+                            <Link href="/apartments" className={styles.primaryButton}>
                                 <span>Подобрать квартиру</span>
                                 <span className={styles.buttonArrow}>↗</span>
                             </Link>

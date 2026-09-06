@@ -1,6 +1,5 @@
 import Header from '@/src/components/header/header';
-import SmoothScroll from '../../components/smooth-scroll/smooth-scroll';
-import Footer from '../../components/footer/footer';
+import Footer from '../../components/Footer/Footer';
 
 export default function MainLayout({
     children,
@@ -8,11 +7,11 @@ export default function MainLayout({
     children: React.ReactNode;
 }>) {
     return (
-            <SmoothScroll>
-                <Header />
-                {children}
-                <Footer/>
-            </SmoothScroll>
+        <>
+            <Header />
+            {children}
+            <Footer />
+        </>
     );
 }
 

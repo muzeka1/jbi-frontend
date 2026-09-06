@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "./footer.module.css";
+import styles from "./Footer.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,7 +94,7 @@ export default function Footer() {
               <span>которые становятся частью вашей жизни.</span>
             </h2>
 
-            <Link href="/contacts" className={styles.cta}>
+            <Link href="/request" className={styles.cta}>
               <span>Оставить заявку</span>
 
               <span className={styles.arrow}>↗</span>

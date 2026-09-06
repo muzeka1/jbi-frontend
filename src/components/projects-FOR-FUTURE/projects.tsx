@@ -1,190 +1,164 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper';
-
-import 'swiper/css';
+import ProjectCard from '@/src/components/projects-FOR-FUTURE/project-card/project-card';
 
 import styles from './projects.module.css';
 
-const PROJECT_COUNT = 5;
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-    { id: 1, color: '#D54848' },
-    { id: 2, color: '#4A6FA5' },
-    { id: 3, color: '#5C8D6A' },
-    { id: 4, color: '#B58B3A' },
-    { id: 5, color: '#735A9E' },
+    {
+        id: 1,
+        imagePosition: 'left' as const,
+        image: '/images/renders/3.jpg',
+        title: 'Заголовок 1',
+        text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
+        description: 'Text - text text',
+    },
+    {
+        id: 2,
+        imagePosition: 'right' as const,
+        image: '/images/renders/3.jpg',
+        title: 'Заголовок 2',
+        text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
+        description: 'Text - text text',
+    },
+    {
+        id: 3,
+        imagePosition: 'right' as const,
+        image: '/images/renders/3.jpg',
+        title: 'Заголовок 3',
+        text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
+        description: 'Text - text text',
+    },
+    {
+        id: 4,
+        imagePosition: 'left' as const,
+        image: '/images/renders/3.jpg',
+        title: 'Заголовок 4',
+        text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
+        description: 'Text - text text',
+    },
+    {
+        id: 5,
+        imagePosition: 'left' as const,
+        image: '/images/renders/3.jpg',
+        title: 'Заголовок 5',
+        text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
+        description: 'Text - text text',
+    },
 ];
 
 export default function Projects() {
-    const swiperRef = useRef<SwiperType | null>(null);
-    const sectionRef = useRef<HTMLElement | null>(null)
-
-    const currentIndex = useRef(0);
+    const sectionRef = useRef<HTMLElement | null>(null);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const swiper = swiperRef.current;
-            const section = sectionRef.current
+        const section = sectionRef.current;
 
-            if (!swiper || !section) return;
+        if (!section) return;
 
-            const container =
-                swiper.el.parentElement;
-
-            if (!container) return;
-
-            const rect =
-                container.getBoundingClientRect();
-
-            /*
-             * ==================================
-             * Границы sticky-контейнера
-             * ==================================
-             */
-
-            const topReached = rect.top <= 0;
-
-            const bottomReached =
-                rect.bottom <= window.innerHeight;
-
-
-            const top = section.getBoundingClientRect().top + window.screenY;
-            console.log(top)
-
-            /*
-             * ==================================
-             * Scroll progress
-             * ==================================
-             *
-             * 0   → начало Projects
-             * 1   → конец Projects
-             */
-
-            const sectionRect =
-                section.getBoundingClientRect();
-
-            const scrollableDistance =
-                section.offsetHeight - window.innerHeight;
-
-            const progress = Math.min(
-                Math.max(
-                    -sectionRect.top / scrollableDistance,
-                    0,
-                ),
-                1,
+        const ctx = gsap.context(() => {
+            const cards = gsap.utils.toArray<HTMLElement>(
+                '[data-project-card]',
             );
 
-            /*
-             * ==================================
-             * Определяем слайд
-             * ==================================
-             */
+            cards.forEach((card) => {
+                const image = card.querySelector(
+                    '[data-project-image]',
+                );
 
-            const index = Math.round(
-                progress * (PROJECT_COUNT - 1),
-            );
+                const content = card.querySelector(
+                    '[data-project-content]',
+                );
 
-            /*
-             * Не вызываем Swiper без необходимости.
-             */
+                const imagePosition =
+                    card.dataset.imagePosition;
 
-            if (index === currentIndex.current) {
-                return;
-            }
+                const imageFrom =
+                    imagePosition === 'left'
+                        ? '-100%'
+                        : '100%';
 
-            /*
-             * ==================================
-             * DOWN
-             * ==================================
-             */
+                const contentFrom =
+                    imagePosition === 'left'
+                        ? '100%'
+                        : '-100%';
 
-            if (index > currentIndex.current) {
-                /*
-                 * Следующий слайд можно показывать
-                 * только после того, как sticky
-                 * достиг верхней границы.
-                 */
+                gsap.set(image, {
+                    xPercent: imageFrom === '-100%' ? -100 : 100,
+                    autoAlpha: 0,
+                });
 
-                if (!topReached) {
-                    return;
-                }
-            }
+                gsap.set(content, {
+                    xPercent:
+                        contentFrom === '100%'
+                            ? 100
+                            : -100,
+                    autoAlpha: 0,
+                });
 
-            /*
-             * ==================================
-             * UP
-             * ==================================
-             */
+                const timeline = gsap.timeline({
+                    paused: true,
+                });
 
-            if (index < currentIndex.current) {
-                /*
-                 * Назад можно переключать только
-                 * когда весь container дошёл до
-                 * нижней границы viewport.
-                 */
+                timeline
+                    .to(
+                        image,
+                        {
+                            xPercent: 0,
+                            autoAlpha: 1,
+                            duration: 1.1,
+                            ease: 'power4.out',
+                        },
+                        0,
+                    )
+                    .to(
+                        content,
+                        {
+                            xPercent: 0,
+                            autoAlpha: 1,
+                            duration: 1.1,
+                            ease: 'power4.out',
+                        },
+                        0.1,
+                    );
 
-                if (!bottomReached) {
-                    return;
-                }
-            }
+                ScrollTrigger.create({
+                    trigger: card,
+                    start: 'top 75%',
+                    once: true,
 
-            currentIndex.current = index;
-
-            swiper.slideTo(index);
-        };
-
-        window.addEventListener('scroll', handleScroll, {
-            passive: true,
-        });
-
-        handleScroll();
+                    onEnter: () => {
+                        timeline.play();
+                    },
+                });
+            });
+        }, section);
 
         return () => {
-            window.removeEventListener(
-                'scroll',
-                handleScroll,
-            );
+            ctx.revert();
         };
     }, []);
 
     return (
         <section
-            className={styles.projects}
-            style={{
-                height: `${PROJECT_COUNT * 100}vh`,
-            }}
             ref={sectionRef}
+            className={styles.projects}
         >
-            <div className={styles.sticky}>
-                <Swiper
-                    direction="vertical"
-                    slidesPerView={1}
-                    speed={1400}
-                    allowTouchMove={false}
-                    onSwiper={(swiper) => {
-                        swiperRef.current = swiper;
-                    }}
-                    className={styles.swiper}
-                >
-                    {projects.map((project) => (
-                        <SwiperSlide key={project.id}>
-                            <div
-                                className={styles.card}
-                                style={{
-                                    backgroundColor:
-                                        project.color,
-                                }}
-                            >
-                                {project.id}
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
+            {projects.map((project) => (
+                <ProjectCard
+                    key={project.id}
+                    imagePosition={project.imagePosition}
+                    image={project.image}
+                    title={project.title}
+                    text={project.text}
+                    description={project.description}
+                />
+            ))}
         </section>
     );
 }

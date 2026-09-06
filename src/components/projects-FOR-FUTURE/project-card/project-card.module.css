@@ -1,20 +1,85 @@
 .card {
-  position: relative;
+    display: flex;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    height: 70vh;
 
-  width: 100%;
-  height: 100%;
+    overflow: hidden;
 
-  overflow: hidden;
+    background: #f3f3f0;
+    color: var(--color-text-primary);
 }
 
-.number {
-  font-size: clamp(80px, 15vw, 240px);
-  font-weight: 700;
-  line-height: 1;
+.imageLeft {
+    flex-direction: row;
+}
 
-  color: #ffffff;
+.imageRight {
+    flex-direction: row-reverse;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.imageWrapper {
+    position: relative;
+
+    width: 40%;
+    height: 100%;
+
+    overflow: hidden;
+
+    will-change: transform;
+}
+
+.image {
+    object-fit: cover;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 50%;
+
+    padding: clamp(32px, 6vw, 100px);
+
+    box-sizing: border-box;
+
+    will-change: transform;
+}
+
+.description {
+    display: block;
+
+    margin: 0 0 24px;
+
+    font-size: 14px;
+    line-height: 1.2;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.title {
+    margin: 0 0 24px;
+
+    font-size: clamp(40px, 5vw, 80px);
+    line-height: 0.95;
+    font-weight: 500;
+}
+
+.text {
+    max-width: 600px;
+
+    margin: 0;
+
+    font-size: clamp(18px, 1.5vw, 24px);
+    line-height: 1.4;
 }

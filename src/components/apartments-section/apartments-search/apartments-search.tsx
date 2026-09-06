@@ -34,6 +34,8 @@ const getMax = (apartments: Apartment[], key: keyof Apartment) => {
   );
 };
 
+const ROOM_OPTIONS = [1, 2, 3, 4]
+
 export default function ApartmentFilters({
   apartments,
   onFilterChange,
@@ -66,12 +68,12 @@ export default function ApartmentFilters({
   const [area, setArea] = useState<Range>(areaLimits);
   const [floor, setFloor] = useState<Range>(floorLimits);
 
-  const [rooms, setRooms] = useState<number[]>([]);
+  const [rooms, setRooms] = useState<number[]>(ROOM_OPTIONS);
 
   useEffect(() => {
-    setPrice(priceLimits);
-    setArea(areaLimits);
-    setFloor(floorLimits);
+    // setPrice(priceLimits);
+    // setArea(areaLimits);
+    // setFloor(floorLimits);
   }, [priceLimits, areaLimits, floorLimits]);
 
   const filteredApartments = useMemo(() => {
@@ -146,17 +148,21 @@ export default function ApartmentFilters({
           {/* Все */}
           <button
             type="button"
-            className={`${styles.roomButton} ${rooms.length === 0
+            className={`${styles.roomButton} ${rooms.length === ROOM_OPTIONS.length
               ? styles.roomButtonActive
               : ""
               }`}
-            onClick={() => setRooms([])}
+            onClick={() => setRooms(
+              (prev) => {
+                if (prev.length < ROOM_OPTIONS.length) return ROOM_OPTIONS
+                return []
+              })}
           >
             Все
           </button>
 
           {/* Количество комнат */}
-          {[1, 2, 3, 4].map((room) => {
+          {ROOM_OPTIONS.map((room) => {
             const active = rooms.includes(room);
 
             return (

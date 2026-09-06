@@ -190,7 +190,7 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`${styles.navLink} ${isActive ? styles.active : ""
+                    className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""
                       }`}
                   >
                     {item.title}
@@ -259,18 +259,18 @@ export default function Header() {
                   ref={(el) => {
                     menuItemsRef.current[index] = el;
                   }}
-                  className={styles.navLink}
+                  className={styles.menuLink}
                   onClick={closeMenu}
                 >
-                  <span className={styles.navNumber}>
+                  <span className={styles.menuNumber}>
                     {item.number}
                   </span>
 
-                  <span className={styles.navTitle}>
+                  <span className={styles.menuTitle}>
                     {item.title}
                   </span>
 
-                  <span className={styles.navArrow}>
+                  <span className={styles.menuArrow}>
                     ↗
                   </span>
                 </Link>
@@ -288,8 +288,8 @@ export default function Header() {
                   +7 495 123-45-67
                 </a>
 
-                <a href="mailto:hello@stroygroup.ru">
-                  hello@stroygroup.ru
+                <a href="mailto:mail@mail.ru">
+                  mail@mail.ru
                 </a>
               </div>
 
@@ -297,9 +297,9 @@ export default function Header() {
                 <span>Офис</span>
 
                 <p>
-                  Москва,
+                  Махачкала
                   <br />
-                  ул. Строителей, 12
+                  ул. Юго-Восточная, 3
                 </p>
               </div>
 
@@ -308,8 +308,7 @@ export default function Header() {
 
                 <div className={styles.socials}>
                   <a href="#">Telegram</a>
-                  <a href="#">VK</a>
-                  <a href="#">YouTube</a>
+                  <a href="#">WhatsApp</a>
                 </div>
               </div>
             </div>
