@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 52px;
+  gap: 24px;
 }
 
 .slide {

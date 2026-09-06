@@ -456,7 +456,7 @@ function RangeFilter({
           }
           aria-label={`${title}: от ${value.min}`}
         >
-          <span />
+          {/* <span /> */}
         </button>
 
         {/* MAX thumb */}
@@ -478,7 +478,7 @@ function RangeFilter({
           }
           aria-label={`${title}: до ${value.max}`}
         >
-          <span />
+          {/* <span /> */}
         </button>
       </div>
     </div>

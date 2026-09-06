@@ -2,16 +2,22 @@
 
 :root {
   /* Основные */
-  --color-background: #ffffff;
-  --color-foreground: #111111;
+  --color-background: #ebded7;
+  --color-background-light: #f7f2f0;
+  --color-background-dark: #111;
+  --color-foreground: #4b3d38;
 
   /* Текст */
-  --color-text-primary: #111111;
-  --color-text-muted: #666666;
-  --color-text-secondary: #ffffff;
+  --color-text-primary: #413734;
+  --color-text-muted: #6b5e5a;
+  --color-text-secondary: #eeeeee;
+  --color-text-accent: #cebcbc;
+  --color-text-accent-dark: #181818;
 
   /* Акцент */
-  --color-accent: #000000;
+  --color-accent: #5f4e48;
+  --color-accent-light: #aa8d83;
+  
   --color-accent-hover: #333333;
 
   /* Границы */
@@ -22,37 +28,8 @@
   --color-surface-hover: #eeeeee;
 }
 
-@theme inline {
-  /* Основные */
-  --color-background: var(--color-background);
-  --color-foreground: var(--color-foreground);
-
-  /* Текст */
-  --color-text-primary: var(--color-text-primary);
-  --color-text-secondary: var(--color-text-secondary);
-  --color-text-muted: var(--color-text-muted);
-
-  /* Акцент */
-  --color-accent: var(--color-accent);
-  --color-accent-hover: var(--color-accent-hover);
-
-  /* Границы */
-  --color-border: var(--color-border);
-
-  /* Поверхности */
-  --color-surface: var(--color-surface);
-  --color-surface-hover: var(--color-surface-hover);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #18181a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-background);
+  color: var(--color-foreground);
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -168,7 +168,7 @@ export default function Header() {
     return () => {
       lenis.start();
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, lenis]);
 
   return (
     <>
@@ -230,13 +230,6 @@ export default function Header() {
         style={{ display: "none" }}
       >
         <div className={styles.menuContainer}>
-          <div className={styles.menuHeader}>
-            <Link href="/" className={styles.logo}>
-              <span className={styles.logoText}>
-                JBI
-              </span>
-            </Link>
-
             <button
               type="button"
               className={`${styles.menuButton} ${styles.closeButton}`}
@@ -248,7 +241,6 @@ export default function Header() {
                 <span />
               </span>
             </button>
-          </div>
 
           <div className={styles.menuContent}>
             <nav className={styles.navigation}>

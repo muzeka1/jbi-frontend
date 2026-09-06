@@ -6,8 +6,8 @@
 
     overflow: hidden;
 
-    background: #f3f3f0;
-    color: var(--color-text-primary);
+    background: var(--color-background);
+    color: var(--color-text-accent-dark);
 }
 
 .imageLeft {
