@@ -240,10 +240,7 @@ export default function Hero() {
                 /**
                  * Позиция фоновой картинки.
                  */
-                const backgroundX =
-                  COLUMNS === 1
-                    ? 0
-                    : (column / (COLUMNS - 1)) * 100;
+                const backgroundX = (column / (COLUMNS - 1)) * 100;
 
                 const backgroundY =
                   ROWS === 1

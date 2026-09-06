@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 import './globals.css';
 import SmoothScroll from '@/src/components/smooth-scroll/smooth-scroll';
-import { ScrollException } from '@/src/components/smooth-scroll/smooth-scroll';
 import { ReactNode } from 'react';
 
 const geistSans = Geist({
@@ -25,17 +24,6 @@ export const metadata: Metadata = {
   title: 'JBI',
   description: 'JBI',
 };
-
-const ScrollExceptions: ScrollException[] = [
-  {
-    from: "/request",
-    to: "/"
-  },
-  {
-    from: "/",
-    to: "/request"
-  },
-]
 
 export default function RootLayout({
   children,
